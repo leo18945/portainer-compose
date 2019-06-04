@@ -25,7 +25,7 @@ services:
       - local
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /opt/portainer/data:/data
+      - ./data:/data
 
   watchtower:
     image: v2tec/watchtower
