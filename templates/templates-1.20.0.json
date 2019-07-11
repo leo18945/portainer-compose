@@ -171,26 +171,6 @@
   },
   {
     "type": 1,
-    "title": "Gitlab CE",
-    "description": "Open-source end-to-end software development platform",
-    "note": "Default username is <b>root</b>. Check the <a href=\"https://docs.gitlab.com/omnibus/docker/README.html#after-starting-a-container\" target=\"_blank\">Gitlab documentation</a> to get started.",
-    "categories": ["development", "project-management"],
-    "platform": "linux",
-    "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/gitlab_ce.png",
-    "image": "gitlab/gitlab-ce:latest",
-    "ports": [
-      "80/tcp",
-      "443/tcp",
-      "22/tcp"
-    ],
-    "volumes": [
-      { "container": "/etc/gitlab" },
-      { "container": "/var/log/gitlab" },
-      { "container": "/var/opt/gitlab" }
-    ]
-  },
-  {
-    "type": 1,
     "title": "Minio",
     "description": "A distributed object storage server built for cloud applications and devops",
     "categories": ["storage"],
@@ -582,6 +562,26 @@
       "8088/tcp"
     ],
     "volumes": [{"container": "/var/lib/wowza"}]
+  },
+  {
+    "type": 1,
+    "title": "Gitlab CE",
+    "description": "Open-source end-to-end software development platform",
+    "note": "Default username is <b>root</b>. Check the <a href=\"https://docs.gitlab.com/omnibus/docker/README.html#after-starting-a-container\" target=\"_blank\">Gitlab documentation</a> to get started.",
+    "categories": ["development", "project-management"],
+    "platform": "linux",
+    "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/gitlab_ce.png",
+    "image": "gitlab/gitlab-ce:latest",
+    "ports": [
+      "80/tcp",
+      "443/tcp",
+      "22/tcp"
+    ],
+    "volumes": [
+      { "container": "/etc/gitlab" },
+      { "container": "/var/log/gitlab" },
+      { "container": "/var/opt/gitlab" }
+    ]
   },
   {
     "type": 1,
