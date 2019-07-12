@@ -149,8 +149,9 @@
     "image": "arangodb:latest",
     "env": [
       {
-        "name": "ARANGO_RANDOM_ROOT_PASSWORD",
-        "label": "1"
+        "name": "ARANGO_ROOT_PASSWORD",
+        "label": "Root Password",
+        "default": "pass"
       }
     ],
     "ports": [
