@@ -115,6 +115,19 @@
   },
   {
     "type": 1,
+    "title": "Redis",
+    "description": "Open-source in-memory data structure store",
+    "categories": ["database"],
+    "platform": "linux",
+    "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/redis.png",
+    "image": "redis:latest",
+    "ports": [
+      "6379/tcp"
+    ],
+    "volumes": [{"container": "/data"}]
+  },
+  {
+    "type": 1,
     "title": "Mongo",
     "description": "Open-source document-oriented database",
     "categories": ["database"],
@@ -125,6 +138,25 @@
       "27017/tcp"
     ],
     "volumes": [{"container": "/data/db"}]
+  },
+  {
+    "type": 1,
+    "title": "Arangodb",
+    "description": "Multi-model highly available NoSQL database",
+    "categories": ["database"],
+    "platform": "linux",
+    "logo": "https://d2.alternativeto.net/dist/icons/arangodb_36826.png?width=100&height=100&mode=crop&upscale=false",
+    "image": "arangodb:latest",
+    "env": [
+      {
+        "name": "ARANGO_RANDOM_ROOT_PASSWORD",
+        "label": "1"
+      }
+    ],
+    "ports": [
+      "8529/tcp"
+    ],
+    "volumes": [{"container": "/var/lib/arangodb3"}]
   },
   {
     "type": 1,
@@ -168,6 +200,19 @@
       "9300/tcp"
     ],
     "volumes": [{"container": "/usr/share/elasticsearch/data"}]
+  },
+  {
+    "type": 1,
+    "title": "Solr",
+    "description": "Open-source enterprise search platform",
+    "categories": ["search-engine"],
+    "platform": "linux",
+    "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/solr.png",
+    "image": "solr:latest",
+    "ports": [
+      "8983/tcp"
+    ],
+    "volumes": [{"container": "/opt/solr/mydata"}]
   },
   {
     "type": 1,
@@ -320,32 +365,6 @@
       }
     ],
     "privileged": true
-  },
-  {
-    "type": 1,
-    "title": "Solr",
-    "description": "Open-source enterprise search platform",
-    "categories": ["search-engine"],
-    "platform": "linux",
-    "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/solr.png",
-    "image": "solr:latest",
-    "ports": [
-      "8983/tcp"
-    ],
-    "volumes": [{"container": "/opt/solr/mydata"}]
-  },
-  {
-    "type": 1,
-    "title": "Redis",
-    "description": "Open-source in-memory data structure store",
-    "categories": ["database"],
-    "platform": "linux",
-    "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/redis.png",
-    "image": "redis:latest",
-    "ports": [
-      "6379/tcp"
-    ],
-    "volumes": [{"container": "/data"}]
   },
   {
     "type": 1,
