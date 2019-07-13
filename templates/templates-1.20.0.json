@@ -125,6 +125,19 @@
     "volumes": [{"container": "/var/lib/mysql"}]
   },
   {
+    "type": 2,
+    "title": "TiDB",
+    "description": "TiDB is a distributed HTAP database compatible with the MySQL protocol",
+    "note": "TiDB is a distributed HTAP database compatible with the MySQL protocol, please refer to <a href=\"https://github.com/pingcap/tidb-docker-compose\" target=\"_blank\">Github</a> for production deployments.",
+    "categories": ["database"],
+    "platform": "linux",
+    "logo": "https://netforce.ua/wp-content/uploads/2017/11/TiDB-1-0.png",
+    "repository": {
+      "url": "https://github.com/pingcap/tidb-docker-compose",
+      "stackfile": "docker-compose.yml"
+    }
+  },
+  {
     "type": 1,
     "title": "PostgreSQL",
     "description": "The most advanced open-source database",
