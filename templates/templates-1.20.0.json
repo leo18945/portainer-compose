@@ -28,6 +28,26 @@
   },
   {
     "type": 1,
+    "title": "Nginx Proxy",
+    "description": "Automated nginx proxy for Docker containers using docker-gen",
+    "note": "Automated nginx proxy for Docker containers using docker-gen, please refer to <a href=\"https://hub.docker.com/r/jwilder/nginx-proxy\" target=\"_blank\">Docker Hub</a> for production deployments.",
+    "categories": ["webserver"],
+    "platform": "linux",
+    "logo": "https://elasticbox.com/icons/boxes/b252bb6e-99e4-48b8-b5de-8c5dc4603e14",
+    "image": "jwilder/nginx-proxy:latest",
+    "ports": [
+      "80/tcp"
+    ],
+    "volumes": [
+      {
+        "container": "/tmp/docker.sock",
+        "bind": "/var/run/docker.sock",
+        "readonly": true
+      }
+    ]
+  },
+  {
+    "type": 1,
     "title": "Httpd",
     "description": "Open-source HTTP server",
     "categories": ["webserver"],
@@ -43,6 +63,7 @@
     "type": 1,
     "title": "Caddy",
     "description": "HTTP/2 web server with automatic HTTPS",
+    "note": "HTTP/2 web server with automatic HTTPS, please refer to <a href=\"https://hub.docker.com/r/abiosoft/caddy\" target=\"_blank\">Docker Hub</a> for production deployments.",
     "categories": ["webserver"],
     "platform": "linux",
     "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/caddy.png",
@@ -51,6 +72,19 @@
       "80/tcp", "443/tcp", "2015/tcp"
     ],
     "volumes": [{"container": "/root/.caddy"}]
+  },
+  {
+    "type": 1,
+    "title": "Redis",
+    "description": "Open-source in-memory data structure store",
+    "categories": ["database"],
+    "platform": "linux",
+    "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/redis.png",
+    "image": "redis:latest",
+    "ports": [
+      "6379/tcp"
+    ],
+    "volumes": [{"container": "/data"}]
   },
   {
     "type": 1,
@@ -115,21 +149,38 @@
   },
   {
     "type": 1,
-    "title": "Redis",
-    "description": "Open-source in-memory data structure store",
+    "title": "CockroachDB",
+    "description": "An open-source, survivable, strongly consistent, scale-out SQL database",
+    "note": "Deploys an insecure CockroachDB cluster, please refer to <a href=\"https://hub.docker.com/r/cockroachdb/cockroach\" target=\"_blank\">CockroachDB documentation</a> for production deployments.",
     "categories": ["database"],
     "platform": "linux",
-    "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/redis.png",
-    "image": "redis:latest",
+    "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/cockroachdb.png",
+    "image": "cockroachdb/cockroach:latest",
     "ports": [
-      "6379/tcp"
+      "26257/tcp",
+      "8080/tcp"
     ],
-    "volumes": [{"container": "/data"}]
+    "volumes": [{"container": "/cockroach/cockroach-data"}],
+    "command": "start --insecure"
+  },
+  {
+    "type": 2,
+    "title": "CockroachDB",
+    "description": "CockroachDB cluster",
+    "note": "Deploys an insecure CockroachDB cluster, please refer to <a href=\"https://hub.docker.com/r/cockroachdb/cockroach\" target=\"_blank\">CockroachDB documentation</a> for production deployments.",
+    "categories": ["database"],
+    "platform": "linux",
+    "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/cockroachdb.png",
+    "repository": {
+      "url": "https://github.com/portainer/templates",
+      "stackfile": "stacks/cockroachdb/docker-stack.yml"
+    }
   },
   {
     "type": 1,
-    "title": "Mongo",
+    "title": "MongoDB",
     "description": "Open-source document-oriented database",
+    "note": "Open-source document-oriented database, please refer to <a href=\"https://hub.docker.com/_/mongo\" target=\"_blank\">Docker Hub</a> for production deployments.",
     "categories": ["database"],
     "platform": "linux",
     "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/mongo.png",
@@ -143,6 +194,7 @@
     "type": 1,
     "title": "Arangodb",
     "description": "Multi-model highly available NoSQL database",
+    "note": "Multi-model highly available NoSQL database, please refer to <a href=\"https://hub.docker.com/_/arangodb\" target=\"_blank\">Docker Hub</a> for production deployments.",
     "categories": ["database"],
     "platform": "linux",
     "logo": "https://d2.alternativeto.net/dist/icons/arangodb_36826.png?width=100&height=100&mode=crop&upscale=false",
@@ -161,32 +213,16 @@
   },
   {
     "type": 1,
-    "title": "CockroachDB",
-    "description": "An open-source, survivable, strongly consistent, scale-out SQL database",
-    "categories": ["database"],
+    "title": "Solr",
+    "description": "Open-source enterprise search platform",
+    "categories": ["search-engine"],
     "platform": "linux",
-    "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/cockroachdb.png",
-    "image": "cockroachdb/cockroach:latest",
+    "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/solr.png",
+    "image": "solr:latest",
     "ports": [
-      "26257/tcp",
-      "8080/tcp"
+      "8983/tcp"
     ],
-    "volumes": [{"container": "/cockroach/cockroach-data"}],
-    "command": "start --insecure"
-  },
-  {
-    "type": 1,
-    "title": "CrateDB",
-    "description": "An open-source distributed SQL database",
-    "categories": ["database"],
-    "platform": "linux",
-    "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/cratedb.png",
-    "image": "crate:latest",
-    "ports": [
-      "4200/tcp",
-      "4300/tcp"
-    ],
-    "volumes": [{"container": "/data"}]
+    "volumes": [{"container": "/opt/solr/mydata"}]
   },
   {
     "type": 1,
@@ -204,21 +240,24 @@
   },
   {
     "type": 1,
-    "title": "Solr",
-    "description": "Open-source enterprise search platform",
-    "categories": ["search-engine"],
+    "title": "CrateDB",
+    "description": "An open-source distributed SQL database",
+    "note": "An open-source distributed SQL database, please refer to <a href=\"https://hub.docker.com/_/crate\" target=\"_blank\">Docker Hub</a> for production deployments.",
+    "categories": ["database"],
     "platform": "linux",
-    "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/solr.png",
-    "image": "solr:latest",
+    "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/cratedb.png",
+    "image": "crate:latest",
     "ports": [
-      "8983/tcp"
+      "4200/tcp",
+      "4300/tcp"
     ],
-    "volumes": [{"container": "/opt/solr/mydata"}]
+    "volumes": [{"container": "/data"}]
   },
   {
     "type": 1,
     "title": "Minio",
     "description": "A distributed object storage server built for cloud applications and devops",
+    "note": "A distributed object storage server built for cloud applications and devops, please refer to <a href=\"https://hub.docker.com/r/minio/minio\" target=\"_blank\">Docker Hub</a> for production deployments.",
     "categories": ["storage"],
     "platform": "linux",
     "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/minio.png",
@@ -695,6 +734,20 @@
   },
   {
     "type": 1,
+    "title": "KODExplore",
+    "note": "A web based file manager,web IDE / browser based code editor, please refer to <a href=\"https://hub.docker.com/r/yangxuan8282/kodexplorer\" target=\"_blank\">Docker Hub</a> for production deployments. Default credentials: admin/password",
+    "description": "A web based file manager,web IDE / browser based code editor", 
+    "categories": ["filesystem", "storage"],
+    "platform": "linux",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/3a/c0/71/3ac07174-c188-6f6e-93d0-492f91c9066c/source/128x128bb.jpg",
+    "image": "yangxuan8282/kodexplorer:latest",
+    "ports": [
+      "8080:80/tcp"
+    ],
+    "volumes": [{"container": "./html:/var/www/html"}]
+  },
+  {
+    "type": 1,
     "title": "CommandBox",
     "description": "ColdFusion (CFML) CLI",
     "categories": ["development"],
@@ -776,19 +829,6 @@
     "repository": {
       "url": "https://github.com/portainer/templates",
       "stackfile": "stacks/ironfunctions/docker-stack.yml"
-    }
-  },
-  {
-    "type": 2,
-    "title": "CockroachDB",
-    "description": "CockroachDB cluster",
-    "note": "Deploys an insecure CockroachDB cluster, please refer to <a href=\"https://www.cockroachlabs.com/docs/stable/orchestrate-cockroachdb-with-docker-swarm.html\" target=\"_blank\">CockroachDB documentation</a> for production deployments.",
-    "categories": ["database"],
-    "platform": "linux",
-    "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/cockroachdb.png",
-    "repository": {
-      "url": "https://github.com/portainer/templates",
-      "stackfile": "stacks/cockroachdb/docker-stack.yml"
     }
   },
   {
