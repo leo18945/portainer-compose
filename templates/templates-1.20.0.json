@@ -420,6 +420,19 @@
     "privileged": true
   },
   {
+    "type": 2,
+    "title": "Kafka",
+    "description": "Apache Kafka is an open-source stream-processing software platform",
+    "note": "Apache Kafka is an open-source stream-processing software platform, please refer to <a href=\"https://github.com/bitnami/bitnami-docker-kafka\" target=\"_blank\">Github</a> for production deployments.",
+    "categories": ["messaging"],
+    "platform": "linux",
+    "logo": "https://svn.apache.org/repos/asf/kafka/site/logos/kafka-logo-no-text.png",
+    "repository": {
+      "url": "https://github.com/bitnami/bitnami-docker-kafka",
+      "stackfile": "docker-compose.yml"
+    }
+  },
+  {
     "type": 1,
     "title": "RabbitMQ",
     "description": "Highly reliable enterprise messaging system",
